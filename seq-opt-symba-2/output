@@ -1,0 +1,320 @@
+begin_version
+3
+end_version
+begin_metric
+1
+end_metric
+7
+begin_variable
+var4
+-1
+2
+Atom currstate(t0)
+NegatedAtom currstate(t0)
+end_variable
+begin_variable
+var5
+-1
+2
+Atom currstate(t1)
+NegatedAtom currstate(t1)
+end_variable
+begin_variable
+var6
+-1
+2
+Atom currstate(t2)
+NegatedAtom currstate(t2)
+end_variable
+begin_variable
+var7
+-1
+2
+Atom currstate(t3)
+NegatedAtom currstate(t3)
+end_variable
+begin_variable
+var8
+-1
+2
+Atom currstate(t4)
+NegatedAtom currstate(t4)
+end_variable
+begin_variable
+var1
+-1
+2
+Atom currstate(s_0_1)
+NegatedAtom currstate(s_0_1)
+end_variable
+begin_variable
+var0
+-1
+2
+Atom currstate(s_0_0)
+NegatedAtom currstate(s_0_0)
+end_variable
+12
+begin_mutex_group
+mutex
+fw
+2
+0 0
+1 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+0 0
+2 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+0 0
+3 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+0 0
+4 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+1 0
+2 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+1 0
+3 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+1 0
+4 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+2 0
+3 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+2 0
+4 0
+end_mutex_group
+begin_mutex_group
+mutex
+fw
+2
+3 0
+4 0
+end_mutex_group
+begin_mutex_group
+exactly_one
+fw
+2
+5 0
+6 0
+end_mutex_group
+begin_mutex_group
+exactly_one
+fw
+2
+5 1
+6 1
+end_mutex_group
+begin_state
+0
+1
+1
+1
+1
+0
+1
+end_state
+begin_goal
+2
+4 0
+6 0
+end_goal
+7
+begin_operator
+add-b-ct0 
+0
+2
+0 6 -1 0
+0 5 0 1
+1
+end_operator
+begin_operator
+del-a-t0t1 
+0
+2
+0 0 0 1
+0 1 -1 0
+1
+end_operator
+begin_operator
+del-f-t2t3 
+0
+2
+0 2 0 1
+0 3 -1 0
+1
+end_operator
+begin_operator
+del-f-t3t4 
+0
+2
+0 3 0 1
+0 4 -1 0
+1
+end_operator
+begin_operator
+del-n-t1t2 
+0
+2
+0 1 0 1
+0 2 -1 0
+1
+end_operator
+begin_operator
+sync-a-t0t1 
+0
+2
+0 0 0 1
+0 1 -1 0
+0
+end_operator
+begin_operator
+sync-n-t1t2 
+0
+2
+0 1 0 1
+0 2 -1 0
+0
+end_operator
+0
+begin_SG
+switch 5
+check 0
+check 1
+0
+check 0
+switch 0
+check 0
+check 2
+1
+5
+check 0
+switch 1
+check 0
+check 2
+4
+6
+check 0
+switch 2
+check 0
+check 1
+2
+check 0
+switch 3
+check 0
+check 1
+3
+check 0
+check 0
+end_SG
+begin_DTG
+1
+1
+5
+0
+0
+end_DTG
+begin_DTG
+1
+1
+6
+0
+1
+0
+5
+1
+0 0
+end_DTG
+begin_DTG
+1
+1
+2
+0
+1
+0
+6
+1
+1 0
+end_DTG
+begin_DTG
+1
+1
+3
+0
+1
+0
+2
+1
+2 0
+end_DTG
+begin_DTG
+0
+1
+0
+3
+1
+3 0
+end_DTG
+begin_DTG
+1
+1
+0
+0
+0
+end_DTG
+begin_DTG
+0
+1
+0
+0
+1
+5 0
+end_DTG
+begin_CG
+1
+1 2
+1
+2 2
+1
+3 1
+1
+4 1
+0
+1
+6 1
+0
+end_CG
