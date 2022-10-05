@@ -31,6 +31,79 @@ public class Utilities {
 
         try {
 			while ((st = br.readLine()) != null) {
+				st = st.trim();
+			    if (st.contains("fake") || st.contains("digraph") || st.contains("}"))
+			        continue;
+			        //Transaction
+			    else if (st.contains("[label")) {
+			        //Transaction
+			        String[] splited = st.split(" ");
+			        String source = splited[0].trim();
+			        String target = splited[2].trim();
+
+			        String label = splited[3].substring(7, splited[3].length() - 1);
+			        
+			        //System.out.println("\nDOT PARSER:\n source: "+source + " target: "+target+" label: "+label+"\n");
+			        
+			        
+			        
+			        Transition t = new Transition(states.get(Integer.parseInt(source)), states.get(Integer.parseInt(target)), label); //DO NOT DELETE! --> Aggiunge allo stato source la transizione!! 
+
+
+			    }
+			    // States
+			    else {
+			        String[] splited = st.split(" ");
+
+			        if (splited.length > 2) {
+			            String label = splited[0];
+			            State s = new State(Integer.parseInt(label));
+			            s.setAccepting(true);
+			            n.addState(s);
+			            n.setInitial(s);
+			            states.put(Integer.parseInt(label), s);
+			        } else if (splited.length == 2) {
+			            String label = splited[0];
+			            State s = new State(Integer.parseInt(label));
+			            n.addState(s);
+			            String text = splited[1].substring(1, splited[1].length() - 1);
+			            if (text.equals("shape=doublecircle")) {
+			                s.setAccepting(true);
+			            } else {
+			                n.setInitial(s);
+			            }
+			            states.put(Integer.parseInt(label), s);
+			        } else {
+			            String label = splited[0];
+			            State s = new State(Integer.parseInt(label));
+			            n.addState(s);
+			            states.put(Integer.parseInt(label), s);
+			        }
+
+
+			    }
+			}
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        return n;
+	}
+	
+	/*
+	public static Automaton getAutomatonForModelLearning(String filename) throws FileNotFoundException {
+        File file = new File(filename);
+        BufferedReader br = null;
+        
+        br = new BufferedReader(new FileReader(file));
+        
+        String st;
+        HashMap<Integer, State> states = new HashMap<>();
+        Automaton n = new Automaton();
+
+        try {
+			while ((st = br.readLine()) != null) {
 			    if (st.contains("fake") || st.contains("digraph") || st.contains("}"))
 			        continue;
 			        //Transaction
@@ -114,7 +187,9 @@ public class Utilities {
         return n;
 	}
 	
-	//not used
+	 */
+	
+	 //not used
 	public static Automaton getAutomatonForModelLearningDot(String filename) throws FileNotFoundException {
         File file = new File(filename);
         BufferedReader br = null;

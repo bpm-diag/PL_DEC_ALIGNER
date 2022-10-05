@@ -65,32 +65,32 @@
 :effect (and (not (currstate s_0_0)) (currstate s_0_1) (currstate s_1_2)  (increase (total-cost) 3))
 )
 
-(:action add-c-ct11
+(:action add-b-ct11
 :precondition (and (currstate s_0_3) (not (currstate s_1_1)) )
 :effect (and (not (currstate s_0_3)) (currstate s_0_0)  (increase (total-cost) 1))
 )
 
-(:action add-c-ct12
+(:action add-b-ct12
 :precondition (and (currstate s_0_2) (not (currstate s_1_1)) )
 :effect (and (not (currstate s_0_2)) (currstate s_0_1)  (increase (total-cost) 1))
 )
 
-(:action add-c-ct13
+(:action add-b-ct13
 :precondition (and (currstate s_1_1) (not (currstate s_0_3)) (not (currstate s_0_2)) )
 :effect (and (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 )
 
-(:action add-c-ct14
+(:action add-b-ct14
 :precondition (and (currstate s_0_3) (currstate s_1_1) )
 :effect (and (not (currstate s_0_3)) (currstate s_0_0) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 )
 
-(:action add-c-ct15
+(:action add-b-ct15
 :precondition (and (currstate s_0_2) (currstate s_1_1) )
 :effect (and (not (currstate s_0_2)) (currstate s_0_1) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 )
 
-(:action add-b-ct16
+(:action add-c-ct16
 :precondition (currstate s_1_1) 
 :effect (and (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 )
@@ -145,34 +145,34 @@
 :effect (and (not (currstate t1)) (currstate t2) (not (currstate s_0_0)) (currstate s_0_1) (not (currstate s_1_1)) (currstate s_1_0) )
 )
 
-(:action sync-c-ct5
-:precondition (and (currstate t2) (currstate s_0_3) (not (currstate s_1_1)) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_0_3)) (currstate s_0_0) )
+(:action sync-b-ct5
+:precondition (and (currstate t3) (currstate s_0_3) (not (currstate s_1_1)) )
+:effect (and (not (currstate t3)) (currstate t4) (not (currstate s_0_3)) (currstate s_0_0) )
 )
 
-(:action sync-c-ct6
-:precondition (and (currstate t2) (currstate s_0_2) (not (currstate s_1_1)) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_0_2)) (currstate s_0_1) )
+(:action sync-b-ct6
+:precondition (and (currstate t3) (currstate s_0_2) (not (currstate s_1_1)) )
+:effect (and (not (currstate t3)) (currstate t4) (not (currstate s_0_2)) (currstate s_0_1) )
 )
 
-(:action sync-c-ct7
-:precondition (and (currstate t2) (currstate s_1_1) (not (currstate s_0_3)) (not (currstate s_0_2)) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_1_1)) (currstate s_1_0) )
-)
-
-(:action sync-c-ct8
-:precondition (and (currstate t2) (currstate s_0_3) (currstate s_1_1) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_0_3)) (currstate s_0_0) (not (currstate s_1_1)) (currstate s_1_0) )
-)
-
-(:action sync-c-ct9
-:precondition (and (currstate t2) (currstate s_0_2) (currstate s_1_1) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_0_2)) (currstate s_0_1) (not (currstate s_1_1)) (currstate s_1_0) )
-)
-
-(:action sync-b-ct10
-:precondition (and (currstate t3) (currstate s_1_1) )
+(:action sync-b-ct7
+:precondition (and (currstate t3) (currstate s_1_1) (not (currstate s_0_3)) (not (currstate s_0_2)) )
 :effect (and (not (currstate t3)) (currstate t4) (not (currstate s_1_1)) (currstate s_1_0) )
+)
+
+(:action sync-b-ct8
+:precondition (and (currstate t3) (currstate s_0_3) (currstate s_1_1) )
+:effect (and (not (currstate t3)) (currstate t4) (not (currstate s_0_3)) (currstate s_0_0) (not (currstate s_1_1)) (currstate s_1_0) )
+)
+
+(:action sync-b-ct9
+:precondition (and (currstate t3) (currstate s_0_2) (currstate s_1_1) )
+:effect (and (not (currstate t3)) (currstate t4) (not (currstate s_0_2)) (currstate s_0_1) (not (currstate s_1_1)) (currstate s_1_0) )
+)
+
+(:action sync-c-ct10
+:precondition (and (currstate t2) (currstate s_1_1) )
+:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_1_1)) (currstate s_1_0) )
 )
 
 (:action sync-a-t0t1
@@ -184,11 +184,11 @@
 :effect (and (not (currstate t1)) (currstate t2))) 
 
 (:action sync-c-t2t3
-:precondition (and (currstate t2) (not (currstate s_0_3)) (not (currstate s_0_2)) (not (currstate s_1_1)) )
+:precondition (and (currstate t2) (not (currstate s_1_1)) )
 :effect (and (not (currstate t2)) (currstate t3))) 
 
 (:action sync-b-t3t4
-:precondition (and (currstate t3) (not (currstate s_1_1)) )
+:precondition (and (currstate t3) (not (currstate s_0_3)) (not (currstate s_0_2)) (not (currstate s_1_1)) )
 :effect (and (not (currstate t3)) (currstate t4))) 
 
 (:action del-a-ct0
@@ -201,14 +201,14 @@
 :effect (and (not (currstate t1)) (currstate t2) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 ) 
 
-(:action del-c-ct1
-:precondition (and (currstate t2) (currstate s_1_1) )
-:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
-) 
-
-(:action del-b-ct2
+(:action del-b-ct1
 :precondition (and (currstate t3) (currstate s_1_1) )
 :effect (and (not (currstate t3)) (currstate t4) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
+) 
+
+(:action del-c-ct2
+:precondition (and (currstate t2) (currstate s_1_1) )
+:effect (and (not (currstate t2)) (currstate t3) (not (currstate s_1_1)) (currstate s_1_0)  (increase (total-cost) 1))
 ) 
 
 (:action del-a-t0t1

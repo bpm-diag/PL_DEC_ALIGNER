@@ -1,7 +1,6 @@
 package main; 
 
 import java.io.File;
-
 import view.Desktop;
 
 public class Main {
