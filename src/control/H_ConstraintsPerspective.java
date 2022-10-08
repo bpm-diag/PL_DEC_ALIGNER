@@ -38,6 +38,7 @@ import view.LTLformulaPerspective;
 import view.PlannerPerspective;
 import view.ConstraintsPerspective;
 import view.CostPerspective;
+import view.CostPerspective3;
 
 public class H_ConstraintsPerspective {
 	
@@ -341,7 +342,8 @@ public class H_ConstraintsPerspective {
 		_view.getNextStepButton().addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent ae)
-            {           	          	
+            {    
+				Constants.setBack_from_cost(false);       	          	
             	//
             	// The tool works properly only if the set of Declare/LTL constraints is not empty. Otherwise, it throws an exception.
 	        	//
@@ -1015,21 +1017,20 @@ public class H_ConstraintsPerspective {
         			// An instance of kind CostPerspective is created. Basically, it is a JDialog that allows the user to assign 
             		// a fixed (deviation) cost to each activity, or to create specific cost models.
 	         		//
-	         		CostPerspective cst = new CostPerspective();
-             		Constants.setCostPerspective(cst); 
-             		 
-             		
-	         		//Generate the cost automata file .dot
-             		
-	         		Utilities.emptyFolder("cost_automata");
-             		
-             		//pattern: pattern1(acitivity_1, activity_2, cost_1, cost_2)
-             		
-             		Vector<Automaton> cost_automata_vector = new Vector<Automaton>();
-             		
 
-             		for (String cost_model : cst.getCostModelTextArea().getText().split("\\n")) {
-	
+
+	         		//CostPerspective cst = new CostPerspective();        // version with Cost DFA import
+             		//Constants.setCostPerspective(cst); 
+             		CostPerspective3 cst3 = new CostPerspective3();      // version with patterns only
+
+             		
+	         		Utilities.emptyFolder("cost_automata");             		
+             		Vector<Automaton> cost_automata_vector = new Vector<Automaton>();
+
+					for(int k=0; k < cst3.getPatternsListModel().size(); k++){
+						String cost_model = (String) cst3.getPatternsListModel().getElementAt(k); 	
+             		//for (String cost_model : cst.getCostModelTextArea().getText().split("\\n")) {
+						
              			Automaton automaton = null;
        	         		if(cost_model.startsWith("DFA{")) {
        	         			
@@ -1044,7 +1045,7 @@ public class H_ConstraintsPerspective {
 							}
        	         		}
        	         		
-       	         		else {
+       	         		else if(cost_model.startsWith("pattern")) {
        	         			
        	         		StringBuffer cost_automaton_buffer = new StringBuffer();
        	         		
@@ -1240,7 +1241,6 @@ public class H_ConstraintsPerspective {
        	         		cost_automata_vector.add(automaton);
 
              		}
-             		
              		/*
              		
              		//
@@ -1282,10 +1282,14 @@ public class H_ConstraintsPerspective {
 	         		int ii = 0;
 	         		Iterator<Automaton> it_cost_automata = cost_automata_vector.iterator();
 	         		while(it_cost_automata.hasNext()) {
-	         			ii++;
-	         			System.out.println("\nCOST AUTOMATON N. " + ii);
+	         			
 	
-	         			Automaton cost_automaton = it_cost_automata.next();	         		
+	         			Automaton cost_automaton = it_cost_automata.next();
+
+						if(cost_automaton != null){
+						
+						ii++;
+	         			System.out.println("\nCOST AUTOMATON N. " + ii);
 	         		
 	         			State initial_state_of_cost_automaton = cost_automaton.getInit();
 	         			Iterator<State> it1 = cost_automaton.iterator();
@@ -1499,7 +1503,7 @@ public class H_ConstraintsPerspective {
 	         			
 	         			automata_vector.add(cost_automaton);
 	         			automaton_index++;
-               		
+					}
 	         		}
 	         		//
          			// Update the global vectors containing the relevant transitions of the cost automaton.
@@ -1887,11 +1891,13 @@ public class H_ConstraintsPerspective {
 	            		///////////////////////////////////
 	            		
 	             		_view.getConstraintComboBox().setSelectedIndex(0);
-	             		_view.setComponentEnabled(false);       		
+
+						if(!Constants.isBack_from_cost()){
+	             		_view.setComponentEnabled(false);        		
 	             		
 	             	 	ple.setModal(true);
 	             		ple.setVisible(true);
-	             		
+						}
 	             		
 	        		}	        		
 	        		else {
